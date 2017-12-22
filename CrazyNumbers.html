@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crazy Numbers</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onload="btn()" onKeypress="score(event)" style="background: url(pa.jpg)no-repeat center center fixed;background-size: cover;padding-top:30px">
+<script type="text/javascript">
+
+var x,y=0,z,flag=0;
+
+function myStart() {
+    try{
+    flag=1;
+    document.getElementById("yscore").innerHTML="";
+    myVar=setInterval(function(){ z=Math.floor((Math.random()* 10));  document.getElementById("P").innerHTML=z;                                    document.getElementById("myDiv").style.backgroundColor="#FEE04D";}, 1500);
+    document.getElementById("btn_end").disabled=false;
+    document.getElementById("btn_start").disabled=true;
+
+    }
+    catch(err){}
+
+};
+function myStop() {
+    try{
+    clearInterval(myVar);
+   // alert(y);
+    document.getElementById("yscore").innerHTML="Your score: "+y;
+    y=0;
+    flag=0;
+    document.getElementById("P").innerHTML="&#8595";
+    document.getElementById("btn_start").disabled=false;
+    document.getElementById("btn_end").disabled=true;
+    }
+    catch(err){}
+
+};
+ function score(event){
+    try{
+        if(flag==1){
+            x=String.fromCharCode(event.keyCode);
+            if(z==x){
+                y+=1;
+                z=-1;
+                document.getElementById("myDiv").style.backgroundColor="#01a301";
+
+            }
+            else if(z!=x&&z!=-1){
+                  document.getElementById("myDiv").style.backgroundColor="#ff6666";
+
+
+             }
+
+    }
+    }
+     catch(err){}
+    };
+function btn(){
+    try{
+    document.getElementById("btn_start").disabled=false;
+    document.getElementById("btn_end").disabled=true;
+    }
+    catch(err){}
+};
+
+
+
+</script>
+<center>
+<div id="myDiv" style="width:300px;height:300px;background:#FEE04D;margin:20px;border-radius: 200px;border: 1px;">
+	<center>
+	<p id="P" style="height:150px;font-size:130px;color:#80b5ea;text-align: center;padding-top: 70px">&#8595;</p>
+	</center>
+</div>
+<input type="button" value="Start game" class="myButton" onClick="myStart()" id="btn_start"/><span>&nbsp;</span>
+<input type="button" value=" End game " class="myEnd" onClick="myStop()" id="btn_end"/><br>
+    <h1 style="color:#FEE04D;" id="yscore"></h1>
+                                                                        
+</center>
+
+</body>
+</html> 
